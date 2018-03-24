@@ -1,0 +1,30 @@
+body {
+  text-align: center;
+  background: radial-gradient(#64fd64, white);
+}
+
+.container {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-gap: 20px;
+  justify-content: center;
+}
+
+.hide {
+  height: 200px;
+  width: 200px;
+  border: 5px solid black;
+  background: #64fd64;
+}
+
+button {
+  margin-top: 175px;
+  width: 150px;
+}
+
+.anchor {
+  height: 200px;
+  width: 200px;
+  background: white;
+}
