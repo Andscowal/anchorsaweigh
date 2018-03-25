@@ -5,26 +5,37 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      ship: false,
-      anchor: false
+      ship: "false",
+      anchor: "false"
     };
   }
 
-  componentWillMount() {
-    this.baseState = this.state;
+  componentDidMount() {
+    this.timeoutId = setTimeout(
+      function() {
+        this.setState({ ship: "true" });
+      }.bind(this),
+      3000
+    );
+  }
+
+  componentWillUnmount() {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
   }
 
   showShip = () => {
     this.setState({
-      ship: true,
-      anchor: false
+      ship: "true",
+      anchor: "false"
     });
   };
 
   anchorShip = () => {
     this.setState({
-      ship: true,
-      anchor: true
+      ship: this.state.ship == "true" ? "false" : "true",
+      anchor: this.state.anchor == "true" ? "false" : "true"
     });
   };
 
@@ -33,16 +44,16 @@ class App extends Component {
       <div>
         <h1>Anchor down the ship!</h1>
         <div className="container">
-          <div className="hide">
+          <div className={this.state.ship}>
             <button onClick={this.anchorShip}>{"\u2693"}</button>
           </div>
-          <div className="hide">
+          <div className={this.state.ship}>
             <button onClick={this.anchorShip}>{"\u2693"}</button>
           </div>
-          <div className="hide">
+          <div className={this.state.ship}>
             <button onClick={this.anchorShip}>{"\u2693"}</button>
           </div>
-          <div className="hide">
+          <div className={this.state.ship}>
             <button onClick={this.anchorShip}>{"\u2693"}</button>
           </div>
         </div>
